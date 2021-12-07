@@ -1,4 +1,5 @@
 import re
+from os import getenv
 from datetime import datetime, timedelta
 from itertools import groupby
 from typing import List, Tuple
@@ -150,4 +151,4 @@ def handle_my_custom_event(json):
 
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True, port=5123)
+    socketio.run(app, debug=True, port=int(getenv('GUNICORN_PORT', default="5123")))

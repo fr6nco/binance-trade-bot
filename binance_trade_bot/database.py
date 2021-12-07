@@ -22,13 +22,14 @@ class Database:
         self.engine = create_engine(uri)
         self.SessionMaker = sessionmaker(bind=self.engine)
         self.socketio_client = Client()
+        self.api_service_name = os.getenv('API_SERVICE_NAME', 'api')
 
     def socketio_connect(self):
         if self.socketio_client.connected and self.socketio_client.namespaces:
             return True
         try:
             if not self.socketio_client.connected:
-                self.socketio_client.connect("http://api:5123", namespaces=["/backend"])
+                self.socketio_client.connect("http://"+self.api_service_name+":5123", namespaces=["/backend"])
             while not self.socketio_client.connected or not self.socketio_client.namespaces:
                 time.sleep(0.1)
             return True
