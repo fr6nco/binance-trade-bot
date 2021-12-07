@@ -3,7 +3,7 @@ version: "3"
 services:
   crypto-trading-tbo:
     image: edeng23/binance-trade-bot
-    container_name: binance_trader
+    container_name: binance_trader-tbo
     working_dir: /app
     volumes:
       - ./user.cfg:/app/user.cfg
@@ -19,7 +19,7 @@ services:
 
   api-tbo:
     image: edeng23/binance-trade-bot
-    container_name: binance_trader_api
+    container_name: binance_trader_api-tbo
     working_dir: /app
     volumes:
       - ./user.cfg:/app/user.cfg
