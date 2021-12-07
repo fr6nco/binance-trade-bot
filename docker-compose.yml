@@ -29,7 +29,7 @@ services:
       - 5124:5124
     command: gunicorn binance_trade_bot.api_server:app -k eventlet -w 1 --threads 1 -b 0.0.0.0:5124
     depends_on:
-      - crypto-trading
+      - crypto-trading-tbo
 
   sqlitebrowser:
     image: ghcr.io/linuxserver/sqlitebrowser
